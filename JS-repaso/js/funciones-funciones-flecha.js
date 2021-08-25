@@ -27,5 +27,5 @@
 
  //arrow function reducida
   const sumar5=(numero1,numero2)=>`La suma es:${numero1 + numero2}`;
- const resultados=sumar4(60,30);
+ const resultados=sumar4(60,30);dd
  console.log(resultados);
