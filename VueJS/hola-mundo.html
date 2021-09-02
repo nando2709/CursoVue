@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VUEJS</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+</head>
+<body>
+    <div id="app"> 
+
+    <h1>{{ mayusculasTexto }}</h1>
+    <h2 class="bg-dark"
+        :class="colorCantidad">
+        Mi saldo es {{cantidad >1000 ? ' mayor o igual a  mil' : ' menor a mil'}}
+    
+    </h2>
+    <a v-bind:href="enlace">Ir a enlace</a>
+
+    <hr>
+
+     <h2 v-if="estado" > Cuenta Activa</h2>
+      <!--V-else funciona cuando tienen v-if-->
+     <h2 v-else>Cuenta Desactivada</h2>
+
+    <hr>
+
+     <h2 v-if="cantidad >500">Cantidad:{{cantidad}}</h2>
+
+     <h2 v-else if="cantidad < = 500 && cantidad > 0">
+         Cantidad
+         <span style="color:red">{{cantidad}}</span>
+     </h2>
+     
+     <h2 v-else>Sin Cantidad {{cantidad}} por favor revisar su saldo</h2>
+
+
+     <hr>
+
+     <!--V-FOR -->
+    
+     <h2>Mis servicios dispon</h2>
+
+    <ul>
+       <li v-for="(item, index) in servicios" :key="index">{{index +1}}:{{item}}</li>
+    </ul>
+     <hr>
+    <button v-on:click="agregarSaldo">Agregar saldo</button>
+   <!-- <button @click="agregarSaldo">Agregar saldo</button>-->
+   
+   <hr>
+   <button @click="disminuirSaldo(100)" :disabled="desactivar">Disminuir saldo</button>
+
+    
+    <footer-banco 
+             :valor="cantidad"
+             fecha="septiembre 2021"
+    
+    ></footer-banco>
+    
+    </div>
+
+    <script src="js/main.js"></script>
+    
+    <script src="components/footer.js"></script>
+
+    <script >
+        //Montar nuestra aplicacion
+        //recibe el id del div
+        const mountedApp=app.mount('#app')
+        </script>
+</body>
+</html>
